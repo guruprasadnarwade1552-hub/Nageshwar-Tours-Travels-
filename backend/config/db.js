@@ -1,20 +1,27 @@
- import pg from "pg";
+  import pg from "pg";
 import dotenv from "dotenv";
 
 dotenv.config();
-
-console.log(
-    "DATABASE_URL:",
-    process.env.DATABASE_URL
-);
 
 const { Pool } = pg;
 
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
-    ssl:{
-        rejectUnauthorized:false
+    ssl: {
+        rejectUnauthorized: false
     }
 });
+
+
+pool.query("SELECT NOW()")
+.then((result)=>{
+    console.log("✅ Neon PostgreSQL Connected");
+    console.log("Database Time:", result.rows[0]);
+})
+.catch((error)=>{
+    console.error("❌ Database Connection Failed");
+    console.error(error);
+});
+
 
 export default pool;
