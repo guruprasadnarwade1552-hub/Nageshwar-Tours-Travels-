@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking | Nageswar Tours & Travels</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="header">
+
+        <div class="logo">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <span>Nageswar Tours & Travels</span>
+        </div>
+
+        <nav>
+
+            <ul class="navbar">
+
+                <li>
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="cars.html">
+                        Cars
+                    </a>
+                </li>
+
+                <li>
+                    <a href="booking.html">
+                        Booking
+                    </a>
+                </li>
+
+                <li>
+                    <a href="about.html">
+                        About
+                    </a>
+                </li>
+
+                <li>
+                    <a href="contact.html">
+                        Contact
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+     <button class="menu-btn">
+    <i class="fa-solid fa-bars"></i>
+    </button> 
+
+    </header>
+
+<section class="booking-section">
+    <div class="booking-container">
+
+        <!-- LEFT SIDE FORM -->
+        <div class="booking-form-card">
+            <form id="bookingForm" action="#" method="post" novalidate>
+
+                <h3>Trip Details</h3>
+
+                <fieldset>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="customerName">Full Name *</label>
+                            <input type="text" id="customerName" name="customerName" placeholder="Your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="phone">Phone *</label>
+                            <input type="tel" id="phone" name="phone" placeholder="Mobile number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="destinationShort">City/Area</label>
+                            <input type="text" id="destinationShort" name="destinationShort" placeholder="Optional">
+                        </div>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="pickupLocation">Pickup Location *</label>
+                            <input type="text" id="pickupLocation" name="pickupLocation" placeholder="Enter pickup location" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="destinationLocation">Destination Location *</label>
+                            <input type="text" id="destinationLocation" name="destinationLocation" placeholder="Enter destination" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group return-trip">
+                        <label for="roundTrip">
+                            <input type="checkbox" id="roundTrip" name="roundTrip"> Round Trip (Return Journey)
+                        </label>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="pickupDate">Pickup Date *</label>
+                            <input type="date" id="pickupDate" name="pickupDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pickupTime">Pickup Time *</label>
+                            <input type="time" id="pickupTime" name="pickupTime" required>
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="returnDate">Return Date</label>
+                            <input type="date" id="returnDate" name="returnDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="returnTime">Return Time</label>
+                            <input type="time" id="returnTime" name="returnTime">
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="passengers">Passengers *</label>
+                            <input type="number" id="passengers" name="passengers" min="1" max="50" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="totalKm">Total Distance (KM) *</label>
+                            <input type="number" id="totalKm" name="totalKm" required>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <h3>Vehicle Selection</h3>
+                <fieldset>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="carSelect">Select Vehicle *</label>
+                            <select id="carSelect" name="carSelect" required>
+                                <option value="">Select Vehicle</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="ratePerKm">Rate Per KM</label>
+                            <input type="text" id="ratePerKm" name="ratePerKm" readonly>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <h3>Fare Details</h3>
+                <fieldset>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="totalPrice">Total Price (₹)</label>
+                            <input type="text" id="totalPrice" name="totalPrice" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="advanceAmount">Advance Amount (₹)</label>
+                            <input type="number" id="advanceAmount" name="advanceAmount">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <h3>Additional Information</h3>
+                <fieldset>
+                    <div class="form-group">
+                        <label for="travelPurpose">Travel Purpose</label>
+                        <select id="travelPurpose" name="travelPurpose">
+                            <option value="">Select Purpose</option>
+                            <option value="Tour">Tour</option>
+                            <option value="Airport">Airport Transfer</option>
+                            <option value="Wedding">Wedding</option>
+                            <option value="Business">Business</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="specialRequirements">Special Requirements</label>
+                        <textarea id="specialRequirements" name="specialRequirements" rows="5" placeholder="Any special requests (e.g., child seat, extra luggage)"></textarea>
+                    </div>
+                </fieldset>
+
+                <button type="submit" class="btn-primary">Submit Booking Request</button>
+                <div id="bookingMessage" aria-live="polite"></div>
+
+            </form>
+        </div>
+
+        <!-- RIGHT SIDE CARD -->
+        <aside class="booking-info-card" aria-label="Booking information">
+            <h3>Need Immediate Booking?</h3>
+            <p><i class="fa-solid fa-phone" aria-hidden="true"></i> +91 9689650966</p>
+            <p><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp Support</p>
+            <a href="https://wa.me/919689650966" class="btn-primary">Book Via WhatsApp</a>
+            <hr>
+            <h3>Booking Process</h3>
+            <ul>
+                <li>Submit Booking Request</li>
+                <li>Availability Check</li>
+                <li>Admin Confirmation</li>
+                <li>Travel Ready</li>
+            </ul>
+        </aside>
+
+    </div>
+</section>    
+
+
+  <div id="bookingSuccessPopup" class="booking-popup">
+
+    <div class="booking-content">
+
+        <h2>✨ Booking Request Sent</h2>
+
+        <p>
+            Thank you for choosing
+            <b>Nageswar Tours & Travels</b>.
+        </p>
+
+        <p>
+            Your booking request has been received successfully.
+        </p>
+
+        <h3>
+            Our team will contact you shortly through
+            WhatsApp or Phone Call for confirmation,
+            payment and travel assistance.
+        </h3>
+
+        <button onclick="closeSuccessPopup()">
+            Continue
+        </button>
+
+    </div>
+
+</div>
+
+    <!-- JS -->
+    <script src="js/main.js"></script>
+    <script src="js/booking.js"></script>
+
+</body>
+
+</html>

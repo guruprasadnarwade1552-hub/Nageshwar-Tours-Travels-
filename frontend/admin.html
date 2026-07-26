@@ -1,0 +1,505 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>DriveNow Admin Panel</title>
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/admin.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+<div class="admin-container">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="logo">
+
+            <i class="fas fa-car-side"></i>
+            <h2>Nageswar Tours & Travels</h2>
+
+            <button id="sidebarCloseBtn" class="sidebar-close-btn" aria-label="Close menu">
+                <i class="fas fa-xmark"></i>
+            </button>
+
+        </div>
+
+        <ul class="menu">
+
+            <li class="active">
+                <a href="#dashboard">
+                    <i class="fas fa-chart-line"></i>
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="#cars">
+                    <i class="fas fa-car"></i>
+                    Cars
+                </a>
+            </li>
+
+            <li>
+                <a href="#bookings">
+                    <i class="fas fa-calendar-check"></i>
+                    Bookings
+                </a>
+            </li>
+
+            <li>
+                <a href="#calendar">
+                    <i class="fas fa-calendar-days"></i>
+                    Calendar
+                </a>
+            </li>
+
+            
+
+            <li>
+                <a href="#analytics">
+                    <i class="fas fa-chart-pie"></i>
+                    Analytics
+                </a>
+            </li>   
+
+             
+
+        <button id="logoutBtn" class="logout-btn">
+
+        <i class="fa-solid fa-right-from-bracket"></i>
+
+        Logout
+
+       </button>
+
+ 
+
+             
+
+        </ul>
+
+    </aside>
+
+    <!-- SIDEBAR OVERLAY (mobile only) -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <button id="menuBtn" class="mobile-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <h1>Admin Dashboard</h1>
+
+            <div class="top-actions">
+
+                <button id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+
+                <div class="admin-profile">
+
+                    <i class="fas fa-user-shield"></i>
+                    <span>Administrator</span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- DASHBOARD -->
+
+        <section id="dashboard">
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Total Cars</h3>
+            <h2 id="totalCars">0</h2>
+        </div>
+
+        <div class="card">
+            <h3>Total Bookings</h3>
+            <h2 id="totalBookings">0</h2>
+        </div>
+
+        <div class="card">
+            <h3>Pending Bookings</h3>
+            <h2 id="pendingBookings">0</h2>
+        </div>
+
+        <div class="card">
+            <h3>Revenue</h3>
+            <h2 id="totalRevenue">₹0</h2>
+        </div>
+
+    </div>
+
+</section>
+
+        <!-- BOOKINGS -->
+
+       <!-- BOOKINGS MANAGEMENT -->
+
+<section id="bookings" class="panel">
+
+    <div class="panel-header">
+
+    <h2>Booking Management</h2>
+
+    <div class="booking-filters">
+
+        <input
+            type="text"
+            id="bookingSearch"
+            placeholder="Search Customer..."
+        >
+
+        <select id="bookingStatusFilter">
+
+            <option value="all">
+                All Status
+            </option>
+
+            <option value="pending">
+                Pending
+            </option>
+
+            <option value="approved">
+                Approved
+            </option>
+
+            <option value="rejected">
+                Rejected
+            </option>
+
+            <option value="completed">
+                Completed
+            </option>
+
+        </select>
+
+    </div>
+
+</div>
+
+
+    <div class="table-wrapper">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Customer</th>
+                    <th>Phone</th>
+                    <th>Vehicle</th>
+                    <th>Pickup</th>
+                    <th>Destination</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Passengers</th>
+                    <th>KM</th>
+                    <th>Rate</th>
+                    <th>Total</th>
+                    <th>Advance</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody id="bookingTable">
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+        <!-- CARS -->
+
+      <!-- CARS MANAGEMENT -->
+
+<section id="cars" class="panel">
+
+    <div class="panel-header">
+
+        <h2>Car Management</h2>
+
+    </div>
+
+    <!-- CAR FORM -->
+
+    <div class="car-form">
+
+        <input
+        type="text"
+        id="carName"
+        placeholder="Car Name">
+
+        <input
+        type="text"
+        id="carBrand"
+        placeholder="Brand">
+
+        <input
+        type="text"
+        id="carType"
+        placeholder="Type">
+
+        <input
+        type="number"
+        id="carPrice"
+        placeholder="Price Per KM">
+
+        <input
+        type="text"
+        id="carImage"
+        placeholder="Image URL or Image Path">
+
+        <select id="carStatus">
+
+            <option value="available">
+                Available
+            </option>
+
+            <option value="booked">
+                Booked
+            </option>
+
+        </select>
+
+        <button
+        id="saveCarBtn">
+
+            Save Car
+
+        </button>
+
+    </div>
+
+    <!-- CARS TABLE -->
+
+    <div class="table-wrapper">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Brand</th>
+                    <th>Type</th>
+                    <th>Price</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="carsTable">
+
+                <!-- Loaded dynamically from admin-cars.js -->
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+        <!-- CALENDAR -->
+
+    <section id="calendar" class="panel">
+
+<div class="admin-calendar-card">
+
+    <div class="calendar-controls">
+
+        <button id="prevMonthAdmin">
+            ❮
+        </button>
+
+        <h2 id="adminMonthYear"></h2>
+
+        <button id="nextMonthAdmin">
+            ❯
+        </button>
+
+    </div>
+
+    <div class="calendar-weekdays">
+
+        <div>Sun</div>
+        <div>Mon</div>
+        <div>Tue</div>
+        <div>Wed</div>
+        <div>Thu</div>
+        <div>Fri</div>
+        <div>Sat</div>
+
+    </div> 
+
+     
+
+    <div id="adminCalendarGrid"></div>
+
+    </div>
+    </section>
+
+        <!-- ANALYTICS -->
+
+       <section id="analytics" class="panel">
+
+    <div class="panel-header">
+        <h2>Business Analytics</h2>
+    </div>
+
+    <div class="analytics-grid">
+
+       <div class="analytics-box">
+    <div id="monthlyRevenue">
+        <h2>₹0</h2>
+        <p>Total Revenue</p>
+    </div>
+</div>
+        <div class="analytics-box">
+    <div id="bookingTrend">
+        <h2>0</h2>
+        <p>Total Bookings</p>
+    </div>
+</div>
+
+        <div class="analytics-box">
+            <div id="topVehicle"></div>
+        </div>
+
+        <div class="analytics-box">
+            <div id="topCustomer"></div>
+        </div>
+
+        <div class="analytics-box">
+            <div id="availableCars"></div>
+        </div>
+
+        <div class="analytics-box">
+            <div id="completedTrips"></div>
+        </div>
+
+    </div>
+
+        <div class="analytics-chart">
+
+            <h3>Revenue Chart (Last 7 Days)</h3>
+
+            <canvas id="revenueChart"></canvas>
+
+        </div>
+
+</section>
+
+         
+
+        <div id="bookingModal" class="modal">
+
+    <div class="modal-content">
+
+        <span
+            class="close-modal"
+            id="closeBookingModal">
+
+            &times;
+
+        </span>
+
+        <h2>
+            Booking Details
+        </h2>
+
+        <div id="bookingDetails">
+
+        </div>
+
+    </div>
+
+</div>
+
+    </main>
+
+</div>   
+
+     <!-- =========================
+     LOGOUT POPUP
+========================== -->
+
+<div id="logoutPopup" class="logout-popup">
+
+    <div class="logout-box">
+
+        <div class="logout-icon">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+        </div>
+
+        <h2>Logout</h2>
+
+        <p>
+
+            Are you sure you want to logout
+            from Admin Dashboard?
+
+        </p>
+
+        <div class="logout-buttons">
+
+            <button
+                id="cancelLogout"
+                class="cancel-btn">
+
+                Cancel
+
+            </button>
+
+            <button
+                id="confirmLogout"
+                class="confirm-btn">
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+ 
+<script src="js/admin.js"></script>
+<script src="js/admin-cars.js"></script>
+<script src="js/admin-bookings.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="js/admin-auth.js"></script>
+</body>
+</html>

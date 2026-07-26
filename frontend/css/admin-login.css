@@ -1,0 +1,316 @@
+/* ==========================================
+   ADMIN LOGIN - NAGESWAR TOURS & TRAVELS
+========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Poppins",sans-serif;
+}
+
+body{
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:
+    linear-gradient(rgba(0,0,0,.55),
+    rgba(0,0,0,.55)),
+    url("../images/hero-bg.jpg") center/cover no-repeat;
+
+    overflow:hidden;
+
+}
+
+/* Floating Background */
+
+body::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    border-radius:50%;
+
+    background:rgba(0,123,255,.18);
+
+    top:-120px;
+    left:-120px;
+
+    filter:blur(80px);
+
+    animation:float1 8s infinite ease-in-out;
+
+}
+
+body::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:400px;
+    height:400px;
+
+    border-radius:50%;
+
+    background:rgba(0,255,255,.15);
+
+    bottom:-120px;
+    right:-120px;
+
+    filter:blur(80px);
+
+    animation:float2 8s infinite ease-in-out;
+
+}
+
+@keyframes float1{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(30px);
+
+}
+
+}
+
+@keyframes float2{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-30px);
+
+}
+
+}
+
+/* Login Box */
+
+.login-container{
+
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:20px;
+
+    position:relative;
+    z-index:10;
+
+}
+
+.login-card{
+
+    width:420px;
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.18);
+
+    border-radius:20px;
+
+    padding:45px;
+
+    text-align:center;
+
+    box-shadow:
+    0 20px 50px rgba(0,0,0,.35);
+
+    animation:popup .8s ease;
+
+}
+
+@keyframes popup{
+
+from{
+
+opacity:0;
+
+transform:translateY(40px) scale(.9);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0) scale(1);
+
+}
+
+}
+
+.login-icon{
+
+    font-size:65px;
+
+    color:#00bfff;
+
+    margin-bottom:15px;
+
+}
+
+.login-card h1{
+
+    color:#fff;
+
+    font-size:30px;
+
+    margin-bottom:5px;
+
+}
+
+.login-card p{
+
+    color:#ddd;
+
+    margin-bottom:30px;
+
+}
+
+/* Inputs */
+
+.login-card input{
+
+    width:100%;
+
+    padding:15px 18px;
+
+    margin-bottom:18px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:rgba(255,255,255,.18);
+
+    color:#fff;
+
+    font-size:16px;
+
+    outline:none;
+
+    transition:.3s;
+
+}
+
+.login-card input::placeholder{
+
+    color:#ddd;
+
+}
+
+.login-card input:focus{
+
+    background:rgba(255,255,255,.28);
+
+    box-shadow:0 0 10px #00bfff;
+
+}
+
+/* Button */
+
+.login-card button{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    color:#fff;
+
+    background:linear-gradient(135deg,#007bff,#00c6ff);
+
+    transition:.3s;
+
+}
+
+.login-card button:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 12px 30px rgba(0,123,255,.45);
+
+}
+
+.login-card button:active{
+
+    transform:scale(.98);
+
+}
+
+/* Error Message */
+
+#loginMessage{
+
+    margin-top:20px;
+
+    font-size:15px;
+
+    font-weight:500;
+
+    color:#ff6961;
+
+    min-height:22px;
+
+}
+
+/* Mobile */
+
+@media(max-width:600px){
+
+.login-card{
+
+width:100%;
+
+padding:35px 25px;
+
+}
+
+.login-card h1{
+
+font-size:25px;
+
+}
+
+.login-icon{
+
+font-size:55px;
+
+}
+
+}

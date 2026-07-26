@@ -1,0 +1,2676 @@
+   /* ===================================
+   NAGESWAR TOURS & TRAVELS
+   PREMIUM LUXURY THEME
+=================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root{
+
+    --gold:#D4AF37;
+    --gold-light:#F5D76E;
+    --gold-dark:#B8860B;
+
+    --navy:#07111F;
+    --navy-light:#0D1B2A;
+    --navy-card:#12243A;
+
+    --white:#FFFFFF;
+    --text:#D8E2F0;
+    --muted:#94A3B8;
+
+    --glass:rgba(255,255,255,0.08);
+    --glass-border:rgba(255,255,255,0.12);
+
+    --radius:24px;
+
+    --shadow:
+    0 15px 40px rgba(0,0,0,.35);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    background:
+    linear-gradient(
+    180deg,
+    var(--navy),
+    #695d1a93
+    );
+
+    color:var(--white);
+
+    overflow-x:hidden;
+}
+
+/* =======================
+   GLOW EFFECTS
+======================= */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    width:400px;
+    height:400px;
+
+    background:
+    rgba(212,175,55,.08);
+
+    border-radius:50%;
+
+    filter:blur(100px);
+
+    top:-100px;
+    left:-100px;
+
+    z-index:-1;
+}
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    width:350px;
+    height:350px;
+
+    background:
+    rgba(245,215,110,.06);
+
+    border-radius:50%;
+
+    filter:blur(100px);
+
+    bottom:-100px;
+    right:-100px;
+
+    z-index:-1;
+}
+
+/* =======================
+   GLOBAL
+======================= */
+
+section{
+    padding:100px 8%;
+}
+
+img{
+    width:100%;
+    display:block;
+}
+
+a{
+    text-decoration:none;
+}
+
+ul{
+    list-style:none;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.section-title h2{
+
+    font-size:3rem;
+    font-weight:800;
+
+    color:var(--gold);
+}
+
+.section-title p{
+
+    color:var(--muted);
+
+    margin-top:10px;
+}
+
+/* =======================
+   NAVBAR
+======================= */
+
+.header{
+
+    position:fixed;
+
+    top:20px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:92%;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:18px 35px;
+
+    background:var(--glass);
+
+    backdrop-filter:blur(20px);
+
+    border:
+    1px solid var(--glass-border);
+
+    border-radius:20px;
+
+    box-shadow:var(--shadow);
+
+    z-index:1000;
+}
+
+.logo{
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    font-size:1.4rem;
+    font-weight:700;
+
+    color:var(--gold);
+}
+
+.logo i{
+
+    color:var(--gold);
+
+    font-size:2rem;
+}
+
+.navbar{
+
+    display:flex;
+    gap:30px;
+}
+
+.navbar a{
+
+    color:var(--white);
+
+    font-weight:500;
+
+    position:relative;
+}
+
+.navbar a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:-6px;
+
+    width:0;
+
+    height:2px;
+
+    background:var(--gold);
+
+    transition:.3s;
+}
+
+.navbar a:hover::after{
+    width:100%;
+}
+
+.navbar a:hover{
+    color:var(--gold);
+}
+
+/* =======================
+   HERO SECTION
+======================= */
+
+ .hero{
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    position:relative;
+
+    background:
+    linear-gradient(
+        rgba(7, 17, 31, 0.514),
+        rgba(7, 17, 31, 0.589)
+    ),
+    url("../images/eritiga.jpg");
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+    background-attachment:fixed;
+}
+
+.hero-content{
+
+    max-width:900px;
+}
+
+.hero-content h1{
+
+    font-size:4.5rem;
+
+    font-weight:800;
+
+    margin-bottom:20px;
+
+    line-height:1.2;
+}
+
+.hero-content span{
+
+    color:var(--gold);
+}
+
+.hero-content p{
+
+    color:var(--text);
+
+    font-size:1.15rem;
+
+    margin-bottom:35px;
+}
+/* =======================
+   BUTTONS
+======================= */
+
+.btn-primary{
+
+    display:inline-block;
+
+    padding:16px 38px;
+
+    background:
+    linear-gradient(
+    135deg,
+    var(--gold-light),
+    var(--gold-dark)
+    );
+
+    color:#111;
+
+    font-weight:700;
+
+    border-radius:50px;
+
+    transition:.4s;
+}
+
+.btn-primary:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:
+    0 15px 35px rgba(212,175,55,.35);
+}
+
+.btn-secondary{
+
+    display:inline-block;
+
+    padding:16px 38px;
+
+    border:1px solid var(--gold);
+
+    color:var(--gold);
+
+    border-radius:50px;
+
+    margin-left:15px;
+
+    transition:.4s;
+}
+
+.btn-secondary:hover{
+
+    background:var(--gold);
+
+    color:#111;
+}
+
+/* =======================
+   GLASS CARDS
+======================= */
+
+.feature-card,
+.car-card,
+.step{
+
+    background:var(--glass);
+
+    backdrop-filter:blur(20px);
+
+    border:
+    1px solid var(--glass-border);
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+    transition:.4s;
+}
+
+.feature-card:hover,
+.car-card:hover,
+.step:hover{
+
+    transform:
+    translateY(-10px);
+
+    border-color:
+    rgba(212,175,55,.4);
+}
+/* ===================================
+   FEATURES SECTION
+=================================== */
+
+.features{
+    position:relative;
+}
+
+.feature-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(280px,1fr));
+
+    gap:30px;
+}
+
+.feature-card{
+
+    padding:35px 25px;
+
+    text-align:center;
+}
+
+.feature-card i{
+
+    font-size:3rem;
+
+    color:var(--gold);
+
+    margin-bottom:20px;
+}
+
+.feature-card h3{
+
+    margin-bottom:15px;
+
+    font-size:1.3rem;
+}
+
+.feature-card p{
+
+    color:var(--muted);
+
+    line-height:1.7;
+}
+
+/* ===================================
+   POPULAR CARS
+=================================== */
+
+.popular-cars{
+    position:relative;
+}
+
+.cars-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(340px,1fr));
+
+    gap:35px;
+}
+
+.car-card{
+
+    overflow:hidden;
+}
+
+.car-card img{
+
+    height:260px;
+
+    object-fit:cover;
+
+    transition:.6s;
+}
+
+.car-card:hover img{
+
+    transform:scale(1.08);
+}
+
+.car-info{
+
+    padding:25px;
+}
+
+.car-info h3{
+
+    color:var(--gold);
+
+    font-size:1.5rem;
+
+    margin-bottom:15px;
+}
+
+.car-info p{
+
+    color:var(--text);
+
+    margin-bottom:8px;
+}
+
+.book-btn{
+
+    display:inline-block;
+
+    margin-top:15px;
+
+    padding:12px 25px;
+
+    background:
+    linear-gradient(
+    135deg,
+    var(--gold-light),
+    var(--gold-dark)
+    );
+
+    color:#111;
+
+    border-radius:40px;
+
+    font-weight:600;
+
+    transition:.3s;
+}
+
+.book-btn:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+    0 12px 30px rgba(212,175,55,.3);
+}
+
+/* ===================================
+   BOOKING PROCESS
+=================================== */
+
+.booking-process{
+
+    position:relative;
+}
+
+.steps{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:25px;
+}
+
+.step{
+
+    width:240px;
+
+    padding:35px 20px;
+
+    text-align:center;
+}
+
+.step span{
+
+    width:70px;
+    height:70px;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    margin:auto;
+    margin-bottom:20px;
+
+    border-radius:50%;
+
+    background:
+    linear-gradient(
+    135deg,
+    var(--gold-light),
+    var(--gold-dark)
+    );
+
+    color:#111;
+
+    font-size:1.6rem;
+
+    font-weight:700;
+}
+
+.step h3{
+
+    color:var(--white);
+
+    font-size:1.2rem;
+}
+
+/* ===================================
+   AVAILABILITY CALENDAR PREVIEW
+=================================== */
+
+.calendar-section{
+
+    padding:100px 8%;
+}
+
+.calendar-wrapper{
+
+    max-width:1000px;
+
+    margin:auto;
+
+    background:var(--glass);
+
+    backdrop-filter:blur(20px);
+
+    border:
+    1px solid var(--glass-border);
+
+    border-radius:30px;
+
+    padding:40px;
+
+    box-shadow:var(--shadow);
+}
+
+.calendar-header{
+
+    text-align:center;
+
+    margin-bottom:30px;
+}
+
+.calendar-header h3{
+
+    color:var(--gold);
+
+    font-size:2rem;
+}
+
+.calendar-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(7,1fr);
+
+    gap:12px;
+}
+
+.day-name{
+
+    text-align:center;
+
+    font-weight:600;
+
+    color:var(--gold);
+}
+
+.day{
+
+    height:70px;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    border-radius:15px;
+
+    font-weight:600;
+}
+
+.available{
+
+    background:
+    rgba(34,197,94,.2);
+
+    color:#4ade80;
+
+    border:
+    1px solid rgba(34,197,94,.4);
+}
+
+.booked{
+
+    background:
+    rgba(239,68,68,.2);
+
+    color:#f87171;
+
+    border:
+    1px solid rgba(239,68,68,.4);
+}
+
+.pending{
+
+    background:
+    rgba(245,158,11,.2);
+
+    color:#fbbf24;
+
+    border:
+    1px solid rgba(245,158,11,.4);
+}
+
+/* ===================================
+   CTA SECTION
+=================================== */
+
+.cta{
+
+    text-align:center;
+
+    position:relative;
+}
+
+.cta-content{
+
+    max-width:800px;
+
+    margin:auto;
+
+    background:var(--glass);
+
+    backdrop-filter:blur(20px);
+
+    border:
+    1px solid var(--glass-border);
+
+    border-radius:30px;
+
+    padding:60px 40px;
+
+    box-shadow:var(--shadow);
+}
+
+.cta-content h2{
+
+    font-size:3rem;
+
+    color:var(--gold);
+
+    margin-bottom:20px;
+}
+
+.cta-content p{
+
+    color:var(--text);
+
+    margin-bottom:30px;
+
+    font-size:1.1rem;
+}
+
+/* ===================================
+   FOOTER
+=================================== */
+
+footer{
+
+    background:
+    linear-gradient(
+    180deg,
+    #050C16,
+    #02060D
+    );
+
+    padding-top:80px;
+
+    border-top:
+    1px solid rgba(255,255,255,.08);
+}
+
+.footer-container{
+
+    width:90%;
+
+    max-width:1300px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+
+    gap:40px;
+}
+
+.footer-box h3{
+
+    color:var(--gold);
+
+    margin-bottom:20px;
+}
+
+.footer-box p{
+
+    color:var(--text);
+
+    margin-bottom:12px;
+
+    line-height:1.8;
+}
+
+.footer-box a{
+
+    display:block;
+
+    color:var(--text);
+
+    margin-bottom:12px;
+
+    transition:.3s;
+}
+
+.footer-box a:hover{
+
+    color:var(--gold);
+
+    padding-left:6px;
+}
+
+.footer-social{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-top:20px;
+}
+
+.footer-social a{
+
+    width:45px;
+    height:45px;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    border-radius:50%;
+
+    background:var(--glass);
+
+    border:
+    1px solid var(--glass-border);
+
+    color:var(--gold);
+}
+
+.footer-social a:hover{
+
+    background:var(--gold);
+
+    color:#111;
+}
+
+.copyright{
+
+    text-align:center;
+
+    padding:25px;
+
+    margin-top:50px;
+
+    border-top:
+    1px solid rgba(255,255,255,.08);
+
+    color:var(--muted);
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+=================================== */
+
+@media(max-width:992px){
+
+    .hero-content h1{
+        font-size:3.5rem;
+    }
+
+    .cta-content h2{
+        font-size:2.4rem;
+    }
+}
+
+@media(max-width:768px){
+
+    section{
+        padding:80px 5%;
+    }
+
+    .header{
+        width:95%;
+        padding:15px 20px;
+    }
+
+    .navbar{
+        gap:18px;
+    }
+
+    .hero-content h1{
+        font-size:2.8rem;
+    }
+
+    .steps{
+        flex-direction:column;
+    }
+
+    .step{
+        width:100%;
+    }
+
+    .calendar-grid{
+        gap:8px;
+    }
+
+    .day{
+        height:55px;
+        font-size:.9rem;
+    }
+}
+
+@media(max-width:576px){
+
+    .hero-content h1{
+        font-size:2.2rem;
+    }
+
+    .hero-content p{
+        font-size:.95rem;
+    }
+
+    .btn-secondary{
+        margin-left:0;
+        margin-top:15px;
+    }
+
+    .section-title h2{
+        font-size:2.2rem;
+    }
+
+    .cta-content h2{
+        font-size:1.8rem;
+    }
+
+    .cars-grid{
+        grid-template-columns:1fr;
+    }
+
+    .feature-grid{
+        grid-template-columns:1fr;
+    }
+
+    .calendar-grid{
+        grid-template-columns:
+        repeat(7,1fr);
+    }
+
+    .day{
+        height:45px;
+        font-size:.75rem;
+    }
+}
+.logo img{
+    height:55px;
+    width:auto;
+    object-fit:contain;
+}
+ 
+
+
+
+/* ===================================
+   BOOKING PAGE
+=================================== */
+
+.booking-section{
+
+    padding:100px 8%;
+}
+
+.booking-container{
+
+    display:grid;
+
+    grid-template-columns:
+    2fr 1fr;
+
+    gap:35px;
+
+    align-items:start;
+}
+
+/* FORM CARD */
+
+.booking-form-card{
+
+    background:var(--glass);
+
+    backdrop-filter:blur(20px);
+
+    border:
+    1px solid var(--glass-border);
+
+    border-radius:30px;
+
+    padding:40px;
+
+    box-shadow:var(--shadow);
+}
+
+.booking-form-card h3{
+
+    color:var(--gold);
+
+    margin-bottom:25px;
+
+    margin-top:20px;
+
+    font-size:1.4rem;
+}
+
+.booking-form-card h3:first-child{
+    margin-top:0;
+}
+
+/* FORM GRID */
+
+.form-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:20px;
+}
+
+/* FORM GROUP */
+
+.form-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+    margin-bottom:20px;
+}
+
+.form-group label{
+
+    color:var(--white);
+
+    margin-bottom:10px;
+
+    font-weight:500;
+}
+
+/* INPUTS */
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+
+    background:
+    rgba(255,255,255,.06);
+
+    border:
+    1px solid rgba(255,255,255,.12);
+
+    border-radius:15px;
+
+    padding:15px 18px;
+
+    color:var(--white);
+
+    outline:none;
+
+    transition:.3s;
+}
+
+/* SELECT OPTION */
+
+.form-group select{
+
+    appearance:none;
+
+    cursor:pointer;
+}
+
+.form-group select option{
+
+    background:#0D1B2A;
+
+    color:#fff;
+}
+
+/* TEXTAREA */
+
+.form-group textarea{
+
+    resize:vertical;
+
+    min-height:120px;
+}
+
+/* FOCUS EFFECT */
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+
+    border-color:var(--gold);
+
+    box-shadow:
+    0 0 20px rgba(212,175,55,.15);
+}
+
+/* SIDEBAR */
+
+.booking-info-card{
+
+    background:var(--glass);
+
+    backdrop-filter:blur(20px);
+
+    border:
+    1px solid var(--glass-border);
+
+    border-radius:30px;
+
+    padding:35px;
+
+    position:sticky;
+
+    top:120px;
+
+    box-shadow:var(--shadow);
+}
+
+.booking-info-card h3{
+
+    color:var(--gold);
+
+    margin-bottom:20px;
+}
+
+.booking-info-card p{
+
+    color:var(--text);
+
+    margin-bottom:15px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+.booking-info-card i{
+
+    color:var(--gold);
+}
+
+.booking-info-card hr{
+
+    border:none;
+
+    height:1px;
+
+    background:
+    rgba(255,255,255,.1);
+
+    margin:25px 0;
+}
+
+/* PROCESS LIST */
+
+.booking-info-card ul{
+
+    padding-left:20px;
+}
+
+.booking-info-card li{
+
+    color:var(--text);
+
+    margin-bottom:12px;
+}
+
+/* BUTTON FULL WIDTH */
+
+.booking-form-card .btn-primary{
+
+    width:100%;
+
+    border:none;
+
+    cursor:pointer;
+
+    font-size:1rem;
+
+    margin-top:10px;
+}
+
+.booking-info-card .btn-primary{
+
+    width:100%;
+
+    text-align:center;
+
+    display:block;
+
+    margin-top:20px;
+}
+
+/* PLACEHOLDER */
+
+::placeholder{
+
+    color:#94A3B8;
+}
+
+/* ===================================
+   SUCCESS MESSAGE
+=================================== */
+
+.success-message{
+
+    background:
+    rgba(34,197,94,.15);
+
+    border:
+    1px solid rgba(34,197,94,.3);
+
+    color:#4ADE80;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    margin-top:20px;
+}
+
+/* ===================================
+   RESPONSIVE
+=================================== */
+
+@media(max-width:992px){
+
+    .booking-container{
+
+        grid-template-columns:1fr;
+    }
+
+    .booking-info-card{
+
+        position:relative;
+
+        top:0;
+    }
+}
+
+@media(max-width:768px){
+
+    .form-grid{
+
+        grid-template-columns:1fr;
+    }
+
+    .booking-form-card,
+    .booking-info-card{
+
+        padding:25px;
+    }
+}
+
+@media(max-width:576px){
+
+    .booking-section{
+
+        padding:80px 5%;
+    }
+
+    .booking-form-card h3{
+
+        font-size:1.2rem;
+    }
+} 
+
+.services-section{
+    padding:100px 8%;
+}
+
+.stats-section{
+    padding:100px 8%;
+}
+
+.about-text h2{
+    color:var(--gold);
+    font-size:2.5rem;
+    margin-bottom:25px;
+}
+
+
+
+.about-image{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:30px;
+}
+
+.about-image img{
+
+    width:100%;
+
+    max-width:500px;
+
+    border-radius:24px;
+
+    box-shadow:
+    0 20px 40px rgba(0,0,0,.3);
+}
+
+/* SMALL CARD */
+
+.about-mini-card{
+
+    width:100%;
+
+    max-width:350px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:18px 22px;
+
+    background:var(--glass);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid var(--glass-border);
+
+    border-radius:18px;
+
+    box-shadow:var(--shadow);
+}
+
+.about-mini-card i{
+
+    font-size:2rem;
+
+    color:var(--gold);
+}
+
+.about-mini-card h4{
+
+    color:var(--gold);
+
+    margin-bottom:4px;
+}
+
+.about-mini-card p{
+
+    color:var(--text);
+
+    font-size:.9rem;
+
+    margin:0;
+} 
+
+
+
+
+
+
+/* ==========================
+   CONTACT PAGE
+========================== */
+
+.contact-cards-section,
+.contact-section,
+.map-section{
+
+    padding:100px 8%;
+}
+
+/* CONTACT CARDS */
+
+.contact-cards{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+
+    gap:25px;
+}
+
+.contact-card{
+
+    background:rgba(255,255,255,.05);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:24px;
+
+    padding:35px;
+
+    text-align:center;
+
+    transition:.3s;
+}
+
+.contact-card:hover{
+
+    transform:translateY(-10px);
+}
+
+.contact-card i{
+
+    font-size:2.5rem;
+
+    color:var(--gold);
+
+    margin-bottom:20px;
+}
+
+.contact-card h3{
+
+    margin-bottom:12px;
+}
+
+.contact-link{
+
+    display:inline-block;
+
+    margin-top:15px;
+
+    color:var(--gold);
+
+    text-decoration:none;
+
+    font-weight:600;
+}
+
+/* CONTACT SECTION */
+
+.contact-container{
+
+    display:grid;
+
+    grid-template-columns:
+    2fr 1fr;
+
+    gap:30px;
+}
+
+.contact-form-card,
+.contact-info-card{
+
+    background:rgba(255,255,255,.05);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:24px;
+
+    padding:35px;
+}
+
+.contact-form-card h2,
+.contact-info-card h2{
+
+    margin-bottom:25px;
+
+    color:var(--gold);
+}
+
+.input-group{
+
+    margin-bottom:20px;
+}
+
+.input-group input,
+.input-group textarea{
+
+    width:100%;
+
+    padding:15px;
+
+    border-radius:14px;
+
+    border:1px solid rgba(255,255,255,.1);
+
+    background:rgba(255,255,255,.04);
+
+    color:#fff;
+
+    outline:none;
+}
+
+.input-group input:focus,
+.input-group textarea:focus{
+
+    border-color:var(--gold);
+}
+
+/* INFO BOX */
+
+.info-box{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-bottom:25px;
+}
+
+.info-box i{
+
+    color:var(--gold);
+
+    font-size:1.5rem;
+
+    margin-top:5px;
+}
+
+/* MAP */
+
+.map-wrapper{
+
+    overflow:hidden;
+
+    border-radius:24px;
+
+    border:1px solid rgba(255,255,255,.08);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:992px){
+
+    .contact-container{
+
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:768px){
+
+    .contact-cards-section,
+    .contact-section,
+    .map-section{
+
+        padding:80px 5%;
+    }
+}
+
+
+/* ==========================================
+   AVAILABILITY CALENDAR
+========================================== */
+
+.availability-section{
+
+    padding:80px 8%;
+
+    background:
+    linear-gradient(
+    135deg,
+    rgba(91,94,255,.05),
+    rgba(143,148,251,.05)
+    );
+
+}
+
+.availability-container{
+
+    max-width:1000px;
+
+    margin:auto;
+
+    text-align:center;
+
+}
+
+.availability-container h2{
+
+    font-size:40px;
+
+    margin-bottom:15px;
+
+}
+
+.availability-container p{
+
+    color:var(--text-light);
+
+    margin-bottom:40px;
+
+}
+
+.calendar-card{
+
+    background:var(--card);
+
+    border-radius:25px;
+
+    padding:25px;
+
+    box-shadow:var(--shadow);
+
+}
+
+.calendar-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+}
+
+.calendar-header h3{
+
+    font-size:24px;
+
+}
+
+.calendar-header button{
+
+    width:45px;
+
+    height:45px;
+
+    border:none;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+.calendar-days{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(7,1fr);
+
+    font-weight:600;
+
+    margin-bottom:10px;
+
+}
+
+.calendar-days div{
+
+    padding:10px;
+
+}
+
+#calendarGrid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(7,1fr);
+
+    gap:10px;
+
+}
+
+.day{
+
+    height:55px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    background:
+    rgba(0,0,0,.04);
+
+}
+
+.day:hover{
+
+    transform:translateY(-3px);
+
+}
+
+.available-date{
+
+    background:#22c55e;
+
+    color:white;
+
+}
+
+.booked-date{
+
+    background:#ef4444;
+
+    color:white;
+
+    cursor:not-allowed;
+
+}
+
+.today-date{
+
+    border:3px solid #3b82f6;
+
+    font-weight:bold;
+
+}
+
+.calendar-legend{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:25px;
+
+    margin-top:25px;
+
+    flex-wrap:wrap;
+
+}
+
+.calendar-legend span{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+.legend{
+
+    width:18px;
+
+    height:18px;
+
+    border-radius:5px;
+
+}
+
+.available{
+
+    background:#22c55e;
+
+}
+
+.booked{
+
+    background:#ef4444;
+
+}
+
+.today{
+
+    background:#3b82f6;
+
+}
+
+@media(max-width:768px){
+
+    .availability-container h2{
+
+        font-size:30px;
+
+    }
+
+    .day{
+
+        height:45px;
+
+        font-size:14px;
+
+    }
+
+}
+
+ /* ===================================
+   PREMIUM CARS PAGE
+=================================== */
+
+.cars-page{
+    padding:100px 8%;
+}
+
+.cars-toolbar{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:50px;
+}
+
+/* SEARCH */
+
+.search-box{
+
+    flex:1;
+    min-width:300px;
+
+    position:relative;
+}
+
+.search-box i{
+
+    position:absolute;
+
+    left:18px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:var(--gold);
+}
+
+.search-box input{
+
+    width:100%;
+
+    padding:16px 20px 16px 50px;
+
+    border:none;
+
+    outline:none;
+
+    background:var(--glass);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid var(--glass-border);
+
+    border-radius:18px;
+
+    color:var(--white);
+
+    font-size:1rem;
+
+    transition:.3s;
+}
+
+.search-box input:focus{
+
+    border-color:var(--gold);
+
+    box-shadow:
+    0 0 20px rgba(212,175,55,.15);
+}
+
+/* FILTER */
+
+.filter-box{
+
+    min-width:220px;
+
+    position:relative;
+}
+
+.filter-box i{
+
+    position:absolute;
+
+    left:18px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:var(--gold);
+
+    pointer-events:none;
+}
+
+.filter-box select{
+
+    width:100%;
+
+    padding:16px 20px 16px 50px;
+
+    border:none;
+
+    outline:none;
+
+    appearance:none;
+
+    background:var(--glass);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid var(--glass-border);
+
+    border-radius:18px;
+
+    color:var(--white);
+
+    cursor:pointer;
+}
+
+.filter-box select option{
+
+    background:#0D1B2A;
+    color:white;
+}
+
+/* GRID */
+
+#carsContainer{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(340px,1fr));
+
+    gap:35px;
+}
+
+/* CARD */
+
+.car-card{
+
+    background:var(--glass);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid var(--glass-border);
+
+    border-radius:28px;
+
+    overflow:hidden;
+
+    transition:.4s;
+
+    box-shadow:var(--shadow);
+}
+
+.car-card:hover{
+
+    transform:
+    translateY(-12px);
+
+    border-color:
+    rgba(212,175,55,.4);
+}
+
+/* IMAGE */
+
+.car-image{
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.car-image img{
+
+    width:100%;
+
+    height:240px;
+
+    object-fit:cover;
+
+    transition:.5s;
+}
+
+.car-card:hover .car-image img{
+
+    transform:scale(1.08);
+}
+
+/* STATUS */
+
+.car-status{
+
+    position:absolute;
+
+    top:15px;
+    right:15px;
+
+    padding:8px 15px;
+
+    border-radius:30px;
+
+    background:
+    rgba(34,197,94,.9);
+
+    color:white;
+
+    font-size:.85rem;
+
+    font-weight:600;
+}
+
+/* CONTENT */
+
+.car-content{
+
+    padding:25px;
+}
+
+.car-content h3{
+
+    color:var(--gold);
+
+    font-size:1.5rem;
+
+    margin-bottom:8px;
+}
+
+.car-type{
+
+    color:var(--muted);
+
+    margin-bottom:20px;
+}
+
+/* PRICE */
+
+.car-price{
+
+    color:var(--white);
+
+    font-size:2rem;
+
+    font-weight:700;
+
+    margin-bottom:25px;
+}
+
+.car-price span{
+
+    font-size:1rem;
+
+    color:var(--muted);
+}
+
+/* BUTTONS */
+
+.car-actions{
+
+    display:flex;
+
+    gap:12px;
+}
+
+.book-btn{
+
+    flex:1;
+
+    text-align:center;
+
+    padding:13px;
+
+    border-radius:50px;
+
+    background:
+    linear-gradient(
+    135deg,
+    var(--gold-light),
+    var(--gold-dark)
+     
+    );
+
+    color:#090808ea;
+
+    font-weight:700;
+
+    transition:.3s;
+}
+
+.book-btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 10px 25px rgba(212,175,55,.3);
+}
+
+.details-btn{
+
+    flex:1;
+
+    background:transparent;
+
+    border:1px solid var(--gold);
+
+    color:var(--gold);
+
+    border-radius:50px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    transition:.3s;
+}
+
+.details-btn:hover{
+
+    background:var(--gold);
+
+    color:#111;
+}
+
+/* SECTION TAG */
+
+.section-tag{
+
+    display:inline-block;
+
+    padding:10px 20px;
+
+    border-radius:30px;
+
+    background:
+    rgba(212,175,55,.15);
+
+    border:
+    1px solid rgba(212,175,55,.25);
+
+    color:var(--gold);
+
+    font-size:.9rem;
+
+    margin-bottom:15px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .cars-toolbar{
+
+        flex-direction:column;
+    }
+
+    .search-box,
+    .filter-box{
+
+        width:100%;
+    }
+
+    .car-actions{
+
+        flex-direction:column;
+    }
+}
+
+/* ==========================
+   BOOKING FORM TWEAKS
+   Small improvements for accessibility and responsive layout
+   ========================== */
+
+.booking-form-card fieldset{
+    border:0;
+    margin:0 0 20px 0;
+    padding:0;
+}
+
+.booking-form-card .form-grid .form-group{
+    min-width:0; /* allow grid items to shrink on small screens */
+}
+
+.booking-form-card .form-group input,
+.booking-form-card .form-group select,
+.booking-form-card .form-group textarea{
+    width:100%;
+    box-sizing:border-box;
+}
+
+.return-trip{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.return-trip input[type="checkbox"]{
+    transform:translateY(1px);
+    margin-right:6px;
+}
+
+.booking-form-card .btn-primary{
+    padding:14px 20px;
+    font-size:1rem;
+}
+
+@media(max-width:768px){
+    .booking-form-card{ padding:20px; }
+    .booking-info-card{ position:relative; top:0; }
+}
+
+.car-status{
+    display:inline-block;
+    padding:8px 14px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:600;
+    margin:10px 0;
+}
+
+.car-status.available{
+    background:#dcfce7;
+    color:#166534;
+}
+
+.car-status.booked{
+    background:#fee2e2;
+    color:#991b1b;
+}
+
+.car-status.maintenance{
+    background:#fef3c7;
+    color:#92400e;
+}
+
+.book-btn:disabled{
+    background:#9ca3af;
+    cursor:not-allowed;
+    opacity:.7;
+} 
+
+.car-status.available{
+    background:#dcfce7;
+    color:#166534;
+}
+
+.car-status.booked{
+    background:#fee2e2;
+    color:#991b1b;
+}         
+
+
+
+.booking-popup{
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0,0,0,0.55);
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 9999;
+
+    backdrop-filter: blur(5px);
+
+}
+
+.booking-content{
+
+    width: 90%;
+    max-width: 550px;
+
+    padding: 35px;
+
+    border-radius: 20px;
+
+    text-align: center;
+
+    background: rgba(255,255,255,0.12);
+
+    backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(255,215,0,0.4);
+
+    box-shadow:
+    0 8px 30px rgba(255,215,0,0.25);
+
+    color: white;
+
+    animation: popupShow .4s ease;
+
+}
+
+.booking-content h2{
+
+    color: #FFD700;
+
+    font-size: 30px;
+
+    margin-bottom: 15px;
+
+}
+
+.booking-content p{
+
+    color: #f5f5f5;
+
+    line-height: 1.8;
+
+    margin-bottom: 10px;
+
+}
+
+.booking-content button{
+
+    margin-top: 15px;
+
+    padding: 12px 35px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: linear-gradient(
+        135deg,
+        #FFD700,
+        #F4B400
+    );
+
+    color: #111;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+}
+
+.booking-content button:hover{
+
+    transform: translateY(-3px);
+
+    box-shadow:
+    0 5px 20px rgba(255,215,0,0.5);
+
+}
+
+@keyframes popupShow{
+
+    from{
+
+        opacity: 0;
+        transform: scale(.8);
+
+    }
+
+    to{
+
+        opacity: 1;
+        transform: scale(1);
+
+    }
+
+}
+
+
+/* ===================================
+   MOBILE NAVBAR FIX
+   Works with menu-btn + navbar + nav-links
+=================================== */
+
+/* ===================================
+   MOBILE NAVBAR FIX
+   Works with menu-btn + navbar + nav-links
+=================================== */
+
+.menu-btn{
+    display:none;
+    align-items:center;
+    justify-content:center;
+    width:44px;
+    height:44px;
+    border:none;
+    border-radius:14px;
+    background:rgba(255,255,255,.08);
+    color:var(--gold);
+    border:1px solid var(--glass-border);
+    cursor:pointer;
+    flex-shrink:0;
+    transition:.3s;
+}
+
+.menu-btn:hover{
+    background:rgba(212,175,55,.12);
+    transform:translateY(-2px);
+}
+
+@media(max-width:768px){
+
+    .header{
+        width:calc(100% - 12px);
+        top:8px;
+        left:50%;
+        transform:translateX(-50%);
+        padding:12px 14px;
+        border-radius:18px;
+        gap:12px;
+        flex-wrap:nowrap;
+    }
+
+    .logo{
+        flex:1;
+        min-width:0;
+        gap:8px;
+        font-size:1.05rem;
+        overflow:hidden;
+    }
+
+    .logo i{
+        font-size:1.5rem;
+        flex-shrink:0;
+    }
+
+    .logo span,
+    .logo h1,
+    .logo h2{
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:ellipsis;
+        min-width:0;
+    }
+
+    .menu-btn{
+        display:flex;
+    }
+
+    .navbar{
+        position:fixed;
+        top:calc(8px + 12px + 44px + 12px + 8px); /* header top + padding-top + tallest row item + padding-bottom + gap */
+        left:8px;
+        right:8px;
+
+        display:flex;
+        flex-direction:column;
+        gap:12px;
+        padding:16px;
+
+        background:rgba(7,17,31,.96);
+        backdrop-filter:blur(20px);
+        border:1px solid var(--glass-border);
+        border-radius:18px;
+        box-shadow:var(--shadow);
+
+        z-index:999;
+        max-height:calc(100vh - 96px);
+        overflow-y:auto;
+
+        opacity:0;
+        transform:translateY(-12px) scale(.98);
+        pointer-events:none;
+        transition:.25s ease;
+    }
+
+    .navbar.active{
+        opacity:1;
+        transform:translateY(0) scale(1);
+        pointer-events:auto;
+    }
+
+    .navbar{
+        width:100%;
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .navbar a{
+        display:block;
+        width:100%;
+        padding:14px 16px;
+        border-radius:14px;
+        background:rgba(255, 255, 255, 0);
+        border:1px solid rgba(249, 227, 28, 0.811);
+    }
+
+    .navbar a::after{
+        display:none;
+    }
+
+    .navbar a:hover{
+        background:rgba(239, 237, 229, 0);
+    }
+
+    .header .btn-primary,
+    .header .btn-secondary{
+        width:100%;
+        text-align:center;
+        margin-left:0;
+    }
+
+} 
+
+
+/* ===========================
+   SUCCESS POPUP Contact page 
+=========================== */
+
+  .success-popup{
+
+    position:fixed;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:rgba(79, 79, 79, 0.593);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.4s;
+
+    z-index:99999;
+
+}
+
+.success-popup.show{
+
+    opacity:4;
+    visibility:visible;
+
+}
+
+.popup-box{
+
+    width:380px;
+    max-width:90%;
+
+    background:#fefefe28;
+
+    border-radius:18px;
+
+    text-align:center;
+
+    padding:40px 30px;
+
+    transform:scale(.7);
+
+    transition:.4s;
+
+    box-shadow:0 20px 50px rgb(255, 255, 0);
+
+}
+
+.success-popup.show .popup-box{
+
+    transform:scale(1);
+
+}
+
+.checkmark{
+
+    font-size:75px;
+
+    color: var(--gold-light);
+
+    margin-bottom:20px;
+
+    animation:pop .6s ease;
+
+}
+
+.popup-box h2{
+
+    margin-bottom:15px;
+
+    color: var(--gold);
+
+}
+
+.popup-box p{
+
+    color: var(--text);
+
+    line-height:1.7;
+
+    margin-bottom:25px;
+
+}
+
+.popup-box button{
+
+    background : linear-gradient(135deg, #FFD700,#F4B400 );
+
+    color:#151515;
+
+    border:#050000;
+
+    padding:12px 40px;
+
+    border-radius:30px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    transition:.3s;
+
+}
+
+.popup-box button:hover{
+
+    background:#b68b01;
+
+}
+
+@keyframes pop{
+
+0%{
+
+transform:scale(.3) rotate(-20deg);
+
+}
+
+70%{
+
+transform:scale(1.2);
+
+}
+
+100%{
+
+transform:scale(1);
+
+}
+
+}   
