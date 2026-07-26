@@ -96,7 +96,7 @@ router.post("/", async (req, res) => {
             });
         }
 
-        if (carCheck.rows[0].status !== "Available") {
+        if (carCheck.rows[0].status !== "available") {
             return res.status(400).json({
                 message: "This vehicle is currently unavailable"
             });
