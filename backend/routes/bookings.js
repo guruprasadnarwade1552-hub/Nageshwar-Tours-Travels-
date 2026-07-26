@@ -76,19 +76,25 @@ router.post("/", async (req, res) => {
 
         // Basic validation
 
-        if(
-            !customer_name ||
-            !phone ||
-            !car_id ||
-            !pickup_location ||
-            !destination_location ||
-            !pickup_date ||
-            !pickup_time
-        ){  
-            const carCheck = await pool.query(
-            "SELECT status FROM cars WHERE id = $1",
-             [car_id]
-            );
+        if (
+    !customer_name ||
+    !phone ||
+    !car_id ||
+    !pickup_location ||
+    !destination_location ||
+    !pickup_date ||
+    !pickup_time
+) {
+    return res.status(400).json({
+        message: "Required fields missing"
+    });
+}
+
+// Only check the database AFTER validation
+const carCheck = await pool.query(
+    "SELECT status FROM cars WHERE id = $1",
+    [car_id]
+);
 
         if(!carCheck.rows.length){
     return res.status(404).json({
