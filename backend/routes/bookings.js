@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
             SELECT
                 b.*,
                 c.name AS car_name,
-                c.price_per_km
+                c.price_per_day
             FROM bookings b
             LEFT JOIN cars c
             ON b.car_id = c.id
