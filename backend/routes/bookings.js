@@ -6,7 +6,6 @@ const router = express.Router();
 /* GET ALL BOOKINGS */
 
 router.get("/", async (req, res) => {
-
     try {
 
         const result = await pool.query(`
@@ -23,18 +22,12 @@ router.get("/", async (req, res) => {
         res.json(result.rows);
 
     } catch (err) {
-
         console.error(err);
-
         res.status(500).json({
             message: "Server Error"
         });
-
     }
-
 });
-
-/* CREATE BOOKING */
 
 /* CREATE BOOKING */
 
@@ -74,63 +67,44 @@ router.post("/", async (req, res) => {
 
         } = req.body;
 
-        // Basic validation
+        /* Validation */
 
         if (
-    !customer_name ||
-    !phone ||
-    !car_id ||
-    !pickup_location ||
-    !destination_location ||
-    !pickup_date ||
-    !pickup_time
-) {
-    return res.status(400).json({
-        message: "Required fields missing"
-    });
-}
-
-// Only check the database AFTER validation
-const carCheck = await pool.query(
-    "SELECT status FROM cars WHERE id = $1",
-    [car_id]
-);
-
-        if(!carCheck.rows.length){
-    return res.status(404).json({
-        message:"Car not found"
-    });
-        }
-
-        if(carCheck.rows[0].status !== "Available"){
-        return res.status(400).json({
-        message:"This vehicle is currently unavailable"
-        });
-        } 
+            !customer_name ||
+            !phone ||
+            !car_id ||
+            !pickup_location ||
+            !destination_location ||
+            !pickup_date ||
+            !pickup_time
+        ) {
             return res.status(400).json({
                 message: "Required fields missing"
             });
         }
-         
 
-                    const carCheck = await pool.query(
-                "SELECT status FROM cars WHERE id = $1",
-                [car_id]
-            );
+        /* Check Car */
 
-            if(!carCheck.rows.length){
-                return res.status(404).json({
-                    message:"Car not found"
-                });
-            }
+        const carCheck = await pool.query(
+            "SELECT status FROM cars WHERE id = $1",
+            [car_id]
+        );
 
-            if(carCheck.rows[0].status !== "available"){
-                return res.status(400).json({
-                    message:"This vehicle is currently unavailable"
-                });
-            }
+        if (carCheck.rows.length === 0) {
+            return res.status(404).json({
+                message: "Car not found"
+            });
+        }
+
+        if (carCheck.rows[0].status !== "Available") {
+            return res.status(400).json({
+                message: "This vehicle is currently unavailable"
+            });
+        }
+
+        /* Insert Booking */
+
         const result = await pool.query(
-
             `
             INSERT INTO bookings
             (
@@ -177,11 +151,9 @@ const carCheck = await pool.query(
             )
             RETURNING *
             `,
-
             [
-
                 customer_name,
-                email,
+                email || null,
                 phone,
 
                 car_id,
@@ -207,20 +179,17 @@ const carCheck = await pool.query(
 
                 travel_purpose || null,
                 special_requirements || null
-
             ]
-
         );
 
         res.status(201).json(result.rows[0]);
 
-    }
-    catch(err){
+    } catch (err) {
 
         console.error(err);
 
         res.status(500).json({
-            message:"Server Error"
+            message: "Server Error"
         });
 
     }
@@ -229,160 +198,181 @@ const carCheck = await pool.query(
 
 /* APPROVE BOOKING */
 
-router.put("/:id/approve", async (req,res)=>{
+router.put("/:id/approve", async (req, res) => {
 
-    try{
+    try {
 
         const booking = await pool.query(
-            "SELECT car_id FROM bookings WHERE id=$1",
+            "SELECT car_id FROM bookings WHERE id = $1",
             [req.params.id]
         );
+
+        if (booking.rows.length === 0) {
+            return res.status(404).json({
+                message: "Booking not found"
+            });
+        }
 
         const carId = booking.rows[0].car_id;
 
         const result = await pool.query(
-            `UPDATE bookings
-             SET status='approved'
-             WHERE id=$1
-             RETURNING *`,
-             [req.params.id]
-        );
-
-        await pool.query(
-            `UPDATE cars
-             SET status='Booked'
-             WHERE id=$1`,
-             [carId]
-        );
-
-        res.json(result.rows[0]);
-
-    }catch(err){
-
-        console.error(err);
-
-        res.status(500).json({
-            message:"Server Error"
-        });
-
-    }
-
-});
-/* REJECT BOOKING */
-
-router.put("/:id/reject", async (req,res)=>{
-
-    try{
-
-        const booking = await pool.query(
-            "SELECT car_id FROM bookings WHERE id=$1",
+            `
+            UPDATE bookings
+            SET status='approved'
+            WHERE id=$1
+            RETURNING *
+            `,
             [req.params.id]
         );
 
-        const carId = booking.rows[0].car_id;
-
-        const result = await pool.query(
-
-            `UPDATE bookings
-             SET status='rejected'
-             WHERE id=$1
-             RETURNING *`,
-
-            [req.params.id]
-
-        );
-
         await pool.query(
-            `UPDATE cars
-             SET status='available'
-             WHERE id=$1`,
+            `
+            UPDATE cars
+            SET status='Booked'
+            WHERE id=$1
+            `,
             [carId]
         );
 
         res.json(result.rows[0]);
 
-    }catch(err){
+    } catch (err) {
 
         console.error(err);
 
         res.status(500).json({
-            message:"Server Error"
+            message: "Server Error"
         });
 
     }
 
 });
 
-router.delete("/:id", async (req,res)=>{
+/* REJECT BOOKING */
 
-    try{
+router.put("/:id/reject", async (req, res) => {
 
-        await pool.query(
-
-            "DELETE FROM bookings WHERE id=$1",
-
-            [req.params.id]
-
-        );
-
-        res.json({
-
-            success:true
-
-        });
-
-    }
-
-    catch(err){
-
-        console.error(err);
-
-        res.status(500).json({
-
-            message:"Server Error"
-
-        });
-
-    }
-
-});  
-
-router.put("/:id/complete", async(req,res)=>{
-
-    try{
+    try {
 
         const booking = await pool.query(
             "SELECT car_id FROM bookings WHERE id=$1",
             [req.params.id]
         );
 
+        if (booking.rows.length === 0) {
+            return res.status(404).json({
+                message: "Booking not found"
+            });
+        }
+
         const carId = booking.rows[0].car_id;
 
         const result = await pool.query(
-
-            `UPDATE bookings
-             SET status='completed'
-             WHERE id=$1
-             RETURNING *`,
-
+            `
+            UPDATE bookings
+            SET status='rejected'
+            WHERE id=$1
+            RETURNING *
+            `,
             [req.params.id]
         );
 
         await pool.query(
-            `UPDATE cars
-             SET status='Available'
-             WHERE id=$1`,
-             [carId]
+            `
+            UPDATE cars
+            SET status='Available'
+            WHERE id=$1
+            `,
+            [carId]
         );
 
         res.json(result.rows[0]);
 
-    }catch(err){
+    } catch (err) {
 
         console.error(err);
 
         res.status(500).json({
-            message:"Server Error"
+            message: "Server Error"
+        });
+
+    }
+
+});
+
+/* DELETE BOOKING */
+
+router.delete("/:id", async (req, res) => {
+
+    try {
+
+        await pool.query(
+            "DELETE FROM bookings WHERE id=$1",
+            [req.params.id]
+        );
+
+        res.json({
+            success: true
+        });
+
+    } catch (err) {
+
+        console.error(err);
+
+        res.status(500).json({
+            message: "Server Error"
+        });
+
+    }
+
+});
+
+/* COMPLETE BOOKING */
+
+router.put("/:id/complete", async (req, res) => {
+
+    try {
+
+        const booking = await pool.query(
+            "SELECT car_id FROM bookings WHERE id=$1",
+            [req.params.id]
+        );
+
+        if (booking.rows.length === 0) {
+            return res.status(404).json({
+                message: "Booking not found"
+            });
+        }
+
+        const carId = booking.rows[0].car_id;
+
+        const result = await pool.query(
+            `
+            UPDATE bookings
+            SET status='completed'
+            WHERE id=$1
+            RETURNING *
+            `,
+            [req.params.id]
+        );
+
+        await pool.query(
+            `
+            UPDATE cars
+            SET status='Available'
+            WHERE id=$1
+            `,
+            [carId]
+        );
+
+        res.json(result.rows[0]);
+
+    } catch (err) {
+
+        console.error(err);
+
+        res.status(500).json({
+            message: "Server Error"
         });
 
     }
