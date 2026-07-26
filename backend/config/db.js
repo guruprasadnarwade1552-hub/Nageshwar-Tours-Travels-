@@ -19,5 +19,6 @@ pool.connect()
 .catch((err) => {
     console.error(err);
 });
+console.log("DB CONFIG VERSION 2");
 
 export default pool;
