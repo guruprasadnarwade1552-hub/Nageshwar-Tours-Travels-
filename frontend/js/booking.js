@@ -1,8 +1,8 @@
 const CAR_API =
-"http://localhost:5000/api/cars";
+"https://nageshwar-tours-travels-production.up.railway.app/api/cars";
 
 const BOOKING_API =
-"http://localhost:5000/api/bookings";
+"https://nageshwar-tours-travels-production.up.railway.app/api/bookings";
 
 /* LOAD CARS */
 
