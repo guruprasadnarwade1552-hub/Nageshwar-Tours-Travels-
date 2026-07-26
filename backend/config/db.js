@@ -1,4 +1,9 @@
- console.log("DATABASE_URL =", process.env.DATABASE_URL);
+ import pg from "pg";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+const { Pool } = pg;
 
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
@@ -6,3 +11,13 @@ const pool = new Pool({
         rejectUnauthorized: false
     }
 });
+
+pool.connect()
+.then(() => {
+    console.log("✅ PostgreSQL Connected");
+})
+.catch((err) => {
+    console.error(err);
+});
+
+export default pool;
