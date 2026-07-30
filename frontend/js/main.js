@@ -1,7 +1,9 @@
-// =====================================================
+ // =====================================================
 // NAGESWAR TOURS & TRAVELS
 // MAIN JAVASCRIPT FILE
 // =====================================================
+const CALENDAR_API =
+ "https://nageshwar-tours-travels-production.up.railway.app/api/calendar";
 
 (function () {
     if (typeof emailjs !== "undefined") {
@@ -282,19 +284,19 @@ document.head.appendChild(rippleStyle);
 // CUSTOMER CALENDAR
 // ==========================================
 
-let currentDate = new Date();
+async function getBlockedDates() {
 
-function getBlockedDates() {
+    try{
 
-    try {
+        const response = await fetch(CALENDAR_API);
 
-        const stored = JSON.parse(localStorage.getItem("blockedDates"));
+        return await response.json();
 
-        return Array.isArray(stored) ? stored : [];
+    }
 
-    } catch (err) {
+    catch(error){
 
-        console.error("Could not read blocked dates.", err);
+        console.error(error);
 
         return [];
 
@@ -302,7 +304,7 @@ function getBlockedDates() {
 
 }
 
-function renderCalendar() {
+async function renderCalendar() {
 
     const calendarGrid = document.getElementById("calendarGrid");
     const monthYear = document.getElementById("monthYear");
@@ -331,7 +333,7 @@ function renderCalendar() {
         calendarGrid.appendChild(document.createElement("div"));
     }
 
-    const blockedDates = getBlockedDates();
+    const blockedDates =await getBlockedDates();
     const today = new Date();
 
     for (let day = 1; day <= totalDays; day++) {
@@ -342,11 +344,22 @@ function renderCalendar() {
         dayBox.classList.add("day");
         dayBox.textContent = day;
 
-        if (blockedDates.includes(dateString)) {
-            dayBox.classList.add("booked-date");
-        } else {
-            dayBox.classList.add("available-date");
-        }
+     const blocked = blockedDates.find(
+
+    d => d.blocked_date.split("T")[0] === dateString
+
+);
+
+if(blocked){
+
+    dayBox.classList.add("booked-date");
+
+}
+else{
+
+    dayBox.classList.add("available-date");
+
+}
 
         if (day === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
             dayBox.classList.add("today-date");
