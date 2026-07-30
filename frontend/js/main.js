@@ -283,7 +283,7 @@ document.head.appendChild(rippleStyle);
 // ==========================================
 // CUSTOMER CALENDAR
 // ==========================================
-
+let currentDate = new Date();
 async function getBlockedDates() {
 
     try{
