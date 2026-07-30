@@ -9,6 +9,9 @@ const BOOKING_API =
 
 const CAR_API =
 "https://nageshwar-tours-travels-production.up.railway.app/api/cars";
+
+const CALENDAR_API =
+"https://nageshwar-tours-travels-production.up.railway.app/api/calendar";
 // ==========================
 // MOBILE SIDEBAR
 // ==========================
@@ -132,40 +135,50 @@ const adminMonthYear = document.getElementById("adminMonthYear");
 
 let adminCurrentDate = new Date();
 
-function getBlockedDates() {
+ async function getBlockedDates() {
 
-    try {
-        const stored = JSON.parse(localStorage.getItem("blockedDates"));
-        return Array.isArray(stored) ? stored : [];
-    } catch (err) {
-        // Corrupt data in localStorage shouldn't crash the calendar
-        console.error("Could not read blockedDates, resetting.", err);
-        return [];
-    }
+    const response = await fetch(CALENDAR_API);
+
+    return await response.json();
 
 }
 
-function saveBlockedDates(blockedDates) {
+async function blockDate(dateString) {
 
-    localStorage.setItem("blockedDates", JSON.stringify(blockedDates));
+    await fetch(CALENDAR_API, {
+
+        method: "POST",
+
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+
+            blocked_date: dateString,
+            reason: "Blocked By Admin"
+
+        })
+
+    });
 
 }
 
-function toggleBlockedDate(dateString) {
+async function unblockDate(id) {
 
-    let blockedDates = getBlockedDates();
+    await fetch(`${CALENDAR_API}/${id}`, {
 
-    if (blockedDates.includes(dateString)) {
-        blockedDates = blockedDates.filter(d => d !== dateString);
-    } else {
-        blockedDates.push(dateString);
-    }
+        method: "DELETE"
 
-    saveBlockedDates(blockedDates);
+    });
 
 }
 
-function renderAdminCalendar() {
+ 
+ 
+ 
+
+async function renderAdminCalendar() {
 
     if (!adminCalendarGrid || !adminMonthYear) return;
 
@@ -187,7 +200,7 @@ function renderAdminCalendar() {
         adminCalendarGrid.appendChild(document.createElement("div"));
     }
 
-    const blockedDates = getBlockedDates();
+    const blockedDates = await getBlockedDates();
     const today = new Date();
 
     for (let day = 1; day <= totalDays; day++) {
@@ -199,9 +212,17 @@ function renderAdminCalendar() {
         dayBox.classList.add("admin-day");
         dayBox.textContent = day;
 
-        if (blockedDates.includes(dateString)) {
-            dayBox.classList.add("admin-booked");
-        }
+     const blocked = blockedDates.find(
+
+    d => d.blocked_date.split("T")[0] === dateString
+
+);
+
+if(blocked){
+
+    dayBox.classList.add("admin-booked");
+
+}
 
         if (
             day === today.getDate() &&
@@ -211,10 +232,23 @@ function renderAdminCalendar() {
             dayBox.classList.add("admin-today");
         }
 
-        dayBox.addEventListener("click", () => {
-            toggleBlockedDate(dateString);
-            renderAdminCalendar();
-        });
+       dayBox.addEventListener("click", async () => {
+
+    if(blocked){
+
+        await unblockDate(blocked.id);
+
+    }
+
+    else{
+
+        await blockDate(dateString);
+
+    }
+
+    renderAdminCalendar();
+
+});
 
         adminCalendarGrid.appendChild(dayBox);
 
